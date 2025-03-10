@@ -2,10 +2,10 @@ import { TaskModel } from "@/models/task";
 import { connectDb } from "@/utils/database";
 import { NextRequest, NextResponse } from "next/server";
 
-export const GET = async (
+export async function GET(
   req: NextRequest,
   { params }: { params: { id: string } }
-) => {
+): Promise<NextResponse> {
   try {
     await connectDb();
     const task = await TaskModel.findById(params.id);
@@ -20,6 +20,6 @@ export const GET = async (
       { status: 500 }
     );
   }
-};
+}
 
 export const dynamic = "force-dynamic";
