@@ -3,7 +3,7 @@ import { connectDb } from "@/utils/database";
 import { NextRequest, NextResponse } from "next/server";
 
 export const GET = async (
-  _: NextRequest,
+  req: NextRequest,
   { params }: { params: { id: string } }
 ) => {
   try {
