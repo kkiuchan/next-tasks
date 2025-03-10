@@ -3,10 +3,9 @@ import { connectDb } from "@/utils/database";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(
-  req: NextRequest,
-  { params }: { params: { id: any } }
-): // { params }: { params: { id: string } }
-Promise<NextResponse> {
+  _: NextRequest,
+  { params }: { params: { id: string } }
+) {
   try {
     await connectDb();
     const task = await TaskModel.findById(params.id);
