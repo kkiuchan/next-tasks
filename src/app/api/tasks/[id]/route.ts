@@ -4,11 +4,12 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(
   _: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: { id: string } }
 ) {
   try {
     await connectDb();
-    const task = await TaskModel.findById(params.id);
+    const { id } = await params;
+    const task = await TaskModel.findById(id);
     if (!task) {
       return NextResponse.json({ message: "Task not found" }, { status: 404 });
     }
