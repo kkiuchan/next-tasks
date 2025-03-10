@@ -1,6 +1,5 @@
 import TaskCard from "@/components/TaskCard/TaskCard";
 import { TaskDocument } from "@/models/task";
-import { get } from "http";
 
 const getExpiredTasks = async (): Promise<TaskDocument[]> => {
   const response = await fetch(`${process.env.API_URL}/tasks/expired`, {
